@@ -1,8 +1,8 @@
-# Настройка Pgpool-II в режиме "Master-Mster"
+# Настройка Pgpool-II в режиме "Master-Master"
 
 ## Аннотация
 
-В статье описан способ конфигурации PgPOOL-II в качестве балансировщика "читающей" (SELECT) нагрузки PostgreSQL в режиме "Master-Master" используя принципы [IP Anycast](https://en.wikipedia.org/wiki/Anycast) и [ECMP](https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing).
+В статье описан способ конфигурации PgPool-II в режиме "Master-Master" в качестве балансировщика "читающей" (SELECT) нагрузки с PostgreSQL, используя принципы [IP Anycast](https://en.wikipedia.org/wiki/Anycast) и [ECMP](https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing).
 
 ## Ограничения
 
@@ -57,13 +57,13 @@
 ## Установка и конфигурация пакетов для всех виртуальных машин
 
 1. `apt update && apt upgrade` - (Все VM) - обновляем  все пакеты (если вдруг у нас не свежая установка).
-2. `apt install ipupdown2` - (все VM) - обновленная служба конфигурации сети, необходима для корректной работы вместе с демоном [frr](https://frrouting.org/).
+2. `apt install ifupdown2` - (все VM) - обновленная служба конфигурации сети, необходима для корректной работы вместе с демоном [frr](https://frrouting.org/).
 3. По желанию в файл `/etc/hosts` добавляем наши адреса [пример](configs/etc/hosts) для доступа к виртуальным машинам по именам.
 4. `apt install htop hping3 tcpdump curl nginx` - утилиты для удобства отладки в настройке.
 5. `apt install frr` - (PgSQL1, PgBAL1, PgBAL2, PgBAL3, FRR) - демон маршрутизации.
-6. `apt install postgres` -  (PgSQL1, PgSQL2, PgSQL3) - сервер базы данных PostgreSQL.
+6. `apt install postgresql` -  (PgSQL1, PgSQL2, PgSQL3) - сервер базы данных PostgreSQL.
 7. `apt install pgpool2` - (PgBAL1, PgBAL2, PgBAL3) - балансировщик PgPOOL-II.
-8. `apt install postgres-client` - (FRR) - клиент для подключения к базе данных.
+8. `apt install postgresql-client` - (FRR) - клиент для подключения к базе данных.
 9. Для каждого сервера задайте имя хоста в файле `/etc/hostname` в соответствии с таблицей.
 
 ## Настройка сетевых адресов
