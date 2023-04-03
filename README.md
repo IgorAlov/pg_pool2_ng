@@ -17,7 +17,7 @@
 2. PgCAT - <https://github.com/levkk/pgcat>
 3. Percona - <https://www.percona.com/ha-for-postgresql>
 4. Коннекторы ODBC / JDBC
-5. Стандартная библиотека от PostgreSQL libpq, а у компании [PostgresPRO](https://postgrespro.ru) есть качественный [перевод](https://postgrespro.ru/docs/postgrespro/13/libpq)
+5. Стандартная библиотека от PostgreSQL libpq. У компании [PostgresPRO](https://postgrespro.ru) есть качественный [перевод](https://postgrespro.ru/docs/postgrespro/13/libpq) документации.
 
 Варианты 4 и 5 нам не подходят ввиду малой автоматизации из коробки, и требуют написания дополнительных обёрток, чтобы с ними работать. Другие решения нам подходят, но до конца соответствуют требованиям, которые предъявляет наша компания.
 
